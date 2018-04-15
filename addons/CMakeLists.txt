@@ -7,6 +7,14 @@ include(FindPackageHandleStandardArgs)
 
 set(ADDON_PKG_CONFIG_FILES)
 
+if(WANT_DEVCON)
+    add_subdirectory(devcon)
+    set(SUPPORT_DEVCON 1)
+    set(SUPPORT_DEVCON 1 PARENT_SCOPE)
+    set(DEVCON_LINK_WITH ${DEVCON_LINK_WITH} PARENT_SCOPE)
+    list(APPEND ADDON_PKG_CONFIG_FILES allegro_devcon)
+endif(WANT_DEVCON)
+
 if(WANT_PRIMITIVES)
     add_subdirectory(primitives)
     set(SUPPORT_PRIMITIVES 1)
